@@ -9,7 +9,7 @@ const config = require('config')
 
 router.post('/', async(req,res) => {
     console.log(req.body,'req.body');
-    // try {
+    try {
         const {error} = validateUser(req.body);
         // console.log(error,'error');
         if(error){
@@ -25,9 +25,9 @@ router.post('/', async(req,res) => {
         }
         const token = jwt.sign({_id:user._id}, process.env.PrivateKey);
         res.send({token:token,status:'Success',message:'Login SuccessFully'})
-    // } catch (error) {
-    //     res.status(500).send({error})
-    // }
+    } catch (error) {
+        res.status(500).send({error})
+    }
 
 })
 
