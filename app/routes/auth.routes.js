@@ -11,6 +11,7 @@ router.post('/', async(req,res) => {
     console.log(req.body,'req.body');
     try {
         const {error} = validateUser(req.body);
+        console.log(process.env.PrivateKey);
         // console.log(error,'error');
         if(error){
             res.status(400).send(error.details[0].message)
