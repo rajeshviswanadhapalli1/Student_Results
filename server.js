@@ -14,7 +14,7 @@ const app = express();
 // }
 app.use(cors());
 
-mongoose.connect('mongodb+srv://rajesh:E4dc7kd7pGcJrTR@cluster0.bfixr1o.mongodb.net/?retryWrites=true&w=majority/Students_Results')
+mongoose.connect('mongodb+srv://rajesh:E4dc7kd7pGcJrTR@cluster0.bfixr1o.mongodb.net/Students_Results')
 .then(() => console.log('Database Connected'))
 .catch(err => console.log('Something Went Wrong', err))
 
