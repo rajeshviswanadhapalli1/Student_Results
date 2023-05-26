@@ -3,9 +3,16 @@ const cors = require('cors');
 const Joi = require('joi');
 Joi.objectId = require('joi-objectid')(Joi)
 const users = require('./app/routes/user.routes');
+const allusers = require('./app/routes/users.routes')
+const auth = require('./app/routes/auth.routes')
 const { default: mongoose } = require('mongoose');
+const config = require('config')
 const app = express();
 
+// if(!config){
+//     console.log('FATAL ERROr : Private Key is not Defiened')
+//     process.exit(1)
+// }
 // var corsoptions = {
 //     origin: 'http://localhost:3000',
 //     // methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS'],
@@ -25,7 +32,9 @@ app.use(express.urlencoded({extended:true}));
 app.get('/',(req,res) => {
     res.json({message:"Welcome To Students Results"});
 })
-app.use('/api/users',users)
+app.use('/api/users',users);
+app.use('/api/auth',auth);
+app.use('/api/allusers',allusers)
 
 const PORT = process.env.PORT || 8080;
 
