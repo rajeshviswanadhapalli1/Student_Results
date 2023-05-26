@@ -1,4 +1,4 @@
-const { User, validateUser } = require("../models/user.model");
+const { User, validate } = require("../models/user.model");
 
 const express = require('express');
 const router = express.Router();
@@ -20,7 +20,8 @@ router.post('/', async(req,res) => {
             password:req.body.password
         })
         await user.save();
-        res.send(user)
+        console.log(user,'user');
+        res.status(200).send({data : user,message:'Registered SuccessFully'})
     }
 
 })
