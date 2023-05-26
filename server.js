@@ -12,11 +12,11 @@ var corsoptions = {
     allowedHeaders: ['Content-Type', 'Origin', 'X-Requested-With', 'Accept', 'x-client-key', 'x-client-token', 'x-client-secret', 'Authorization'],
     // credentials: true
 }
+app.use(cors(corsoptions));
 
 mongoose.connect('mongodb+srv://rajesh:E4dc7kd7pGcJrTR@cluster0.bfixr1o.mongodb.net/Students_Results')
 .then(() => console.log('Database Connected'))
 .catch(err => console.log('Something Went Wrong', err))
-app.use(cors(corsoptions));
 
 app.use(express.json());
 
