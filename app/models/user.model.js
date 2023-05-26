@@ -24,19 +24,20 @@ const User = mongoose.model('User', new mongoose.Schema({
     password : {
         type:String,
         required:true,
-        minlength:5,
-        maxlength:8
+        minlength:8,
+        maxlength:20
     }
 }));
 
 function validateUser(user){
-    const schema = {
+    const schema = Joi.object({
         fullname : Joi.string().min(5).max(50).required(),
         email : Joi.string().min(5).max(50).required().email(),
-        username : Joi.string().min(8).max(8).required()
-    };
-    return Joi.validate(user, schema)
+        username : Joi.string().min(4).max(20).required(),
+        password : Joi.string().min(8).max(20).required(),
+    });
+    return schema.validate(user);
 }
 
 exports.User = User;
-exports.validateUser = validateUser
+exports.validate = validateUser
