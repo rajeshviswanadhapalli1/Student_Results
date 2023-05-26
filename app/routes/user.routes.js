@@ -4,7 +4,8 @@ const express = require('express');
 const router = express.Router();
 
 router.post('/', async(req,res) => {
-    const {error} = validate(req.body);
+    try {
+        const {error} = validate(req.body);
     if(error){
         return res.status(400).send(error.details[0].message);
     }
@@ -22,6 +23,9 @@ router.post('/', async(req,res) => {
         await user.save();
         console.log(user,'user');
         res.status(200).send({data : user,message:'Registered SuccessFully'})
+    }
+    } catch (error) {
+        res.status(500).send({error})
     }
 
 })

@@ -12,7 +12,7 @@ var corsoptions = {
     // allowedHeaders: ['Content-Type', 'Origin', 'X-Requested-With', 'Accept', 'x-client-key', 'x-client-token', 'x-client-secret', 'Authorization'],
     // credentials: true
 }
-app.use(cors(corsoptions));
+app.use(cors());
 
 mongoose.connect('mongodb+srv://rajesh:E4dc7kd7pGcJrTR@cluster0.bfixr1o.mongodb.net/Students_Results')
 .then(() => console.log('Database Connected'))
@@ -20,7 +20,7 @@ mongoose.connect('mongodb+srv://rajesh:E4dc7kd7pGcJrTR@cluster0.bfixr1o.mongodb.
 
 app.use(express.json());
 
-// app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({extended:true}));
 
 app.get('/',(req,res) => {
     res.json({message:"Welcome To Students Results"});
