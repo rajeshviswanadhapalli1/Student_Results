@@ -20,7 +20,7 @@ mongoose.connect('mongodb+srv://rajesh:E4dc7kd7pGcJrTR@cluster0.bfixr1o.mongodb.
 
 app.use(express.json());
 
-app.use(express.urlencoded({extended:true}));
+// app.use(express.urlencoded({extended:true}));
 
 app.get('/',(req,res) => {
     res.json({message:"Welcome To Students Results"});
