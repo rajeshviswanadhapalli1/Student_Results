@@ -7,7 +7,7 @@ const { default: mongoose } = require('mongoose');
 const app = express();
 
 var corsoptions = {
-    origin:"http://localhost:8081"
+    origin:"https://studentsresults.onrender.com"
 }
 
 mongoose.connect('mongodb+srv://rajesh:E4dc7kd7pGcJrTR@cluster0.bfixr1o.mongodb.net/Students_Results')
