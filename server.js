@@ -1,10 +1,10 @@
-var express = require('express');
-var cors = require('cors');
+const express = require('express');
+const cors = require('cors');
 const Joi = require('joi');
 Joi.objectId = require('joi-objectid')(Joi)
 const users = require('./app/routes/user.routes');
 const { default: mongoose } = require('mongoose');
-var app = express();
+const app = express();
 
 // var corsoptions = {
 //     origin: 'http://localhost:3000',
@@ -14,7 +14,7 @@ var app = express();
 // }
 app.use(cors());
 
-mongoose.connect('mongodb+srv://rajesh:E4dc7kd7pGcJrTR@cluster0.bfixr1o.mongodb.net/Students_Results')
+mongoose.connect('mongodb+srv://rajesh:E4dc7kd7pGcJrTR@cluster0.bfixr1o.mongodb.net/?retryWrites=true&w=majority/Students_Results')
 .then(() => console.log('Database Connected'))
 .catch(err => console.log('Something Went Wrong', err))
 
