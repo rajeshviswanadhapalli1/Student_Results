@@ -9,10 +9,10 @@ const { default: mongoose } = require('mongoose');
 const config = require('config')
 const app = express();
 
-// if(!config){
-//     console.log('FATAL ERROr : Private Key is not Defiened')
-//     process.exit(1)
-// }
+if(!config){
+    console.log('FATAL ERROr : Private Key is not Defiened')
+    process.exit(1)
+}
 // var corsoptions = {
 //     origin: 'http://localhost:3000',
 //     // methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS'],
