@@ -11,7 +11,7 @@ router.post('/', async(req,res) => {
     console.log(req.body,'req.body');
     try {
         const {error} = validateUser(req.body);
-        console.log(process.env.PrivateKey);
+      
         // console.log(error,'error');
         if(error){
             res.status(400).send(error.details[0].message)
@@ -24,7 +24,7 @@ router.post('/', async(req,res) => {
         if(!validPassword){
             return res.status(400).send('Incorrect Email or Password')
         }
-        const token = jwt.sign({_id:user._id}, process.env.PrivateKey);
+        const token = jwt.sign({_id:user._id}, 'PrivateKey');
         res.send({token:token,status:'Success',message:'Login SuccessFully'})
     } catch (error) {
         res.status(500).send({error})

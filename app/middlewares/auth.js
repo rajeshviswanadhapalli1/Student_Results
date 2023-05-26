@@ -9,7 +9,7 @@ const verifytoken = (req,res,next) => {
     }
 
     try {
-        const decoded = jwt.verify(token,process.env.PrivateKey);
+        const decoded = jwt.verify(token,'PrivateKey');
         console.log(decoded,'decoded');
         req.user = decoded;
     } catch (error) {
