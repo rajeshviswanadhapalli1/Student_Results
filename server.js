@@ -1,10 +1,10 @@
-const express = require('express');
+var express = require('express');
 var cors = require('cors');
 const Joi = require('joi');
 Joi.objectId = require('joi-objectid')(Joi)
 const users = require('./app/routes/user.routes');
 const { default: mongoose } = require('mongoose');
-const app = express();
+var app = express();
 
 // var corsoptions = {
 //     origin: 'http://localhost:3000',
@@ -20,7 +20,7 @@ mongoose.connect('mongodb+srv://rajesh:E4dc7kd7pGcJrTR@cluster0.bfixr1o.mongodb.
 
 app.use(express.json());
 
-// app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({extended:true}));
 
 app.get('/',(req,res) => {
     res.json({message:"Welcome To Students Results"});
