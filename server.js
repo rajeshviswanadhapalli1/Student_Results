@@ -3,10 +3,17 @@ const cors = require('cors');
 const Joi = require('joi');
 Joi.objectId = require('joi-objectid')(Joi)
 const users = require('./app/routes/user.routes');
+const verify = require('./app/routes/otp.routes');
 const allusers = require('./app/routes/users.routes')
 const auth = require('./app/routes/auth.routes')
 const { default: mongoose } = require('mongoose');
-const config = require('config')
+const config = require('config');
+const { SERVER_DB_URI } = require('./app/constants/constants');
+
+// const verifyEmail = require('./app/routes/user.routes');
+
+
+
 const app = express();
 
 if(!config){
@@ -20,8 +27,8 @@ if(!config){
 //     // credentials: true
 // }
 app.use(cors());
-
-mongoose.connect('mongodb+srv://rajesh:E4dc7kd7pGcJrTR@cluster0.bfixr1o.mongodb.net/Students_Results')
+console.log(SERVER_DB_URI,'SERVER_DB_URI');
+mongoose.connect(SERVER_DB_URI)
 .then(() => console.log('Database Connected'))
 .catch(err => console.log('Something Went Wrong', err))
 
@@ -34,7 +41,8 @@ app.get('/',(req,res) => {
 })
 app.use('/api/users',users);
 app.use('/api/auth',auth);
-app.use('/api/allusers',allusers)
+app.use('/api/allusers',allusers);
+app.use('/api/otpverify',verify)
 
 const PORT = process.env.PORT || 8080;
 

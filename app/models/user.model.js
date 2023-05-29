@@ -26,6 +26,14 @@ const User = mongoose.model('User', new mongoose.Schema({
         required:true,
         minlength:8,
         maxlength:255
+    },
+    otp : {
+        type:Number,
+        required:true
+    },
+    active : {
+        type:Boolean,
+        default:false
     }
 }));
 

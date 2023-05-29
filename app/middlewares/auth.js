@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const config = process.env;
+const { JWT_SECRET } = require('../constants/constants');
 
 const verifytoken = (req,res,next) => {
     const token = req.body.token || req.query.token || req.headers["x-access-token"];
@@ -9,7 +9,7 @@ const verifytoken = (req,res,next) => {
     }
 
     try {
-        const decoded = jwt.verify(token,'PrivateKey');
+        const decoded = jwt.verify(token,JWT_SECRET);
         console.log(decoded,'decoded');
         req.user = decoded;
     } catch (error) {

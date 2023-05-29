@@ -5,10 +5,12 @@ const router = express.Router();
 const _ = require('lodash');
 const Joi = require('joi');
 const jwt = require('jsonwebtoken');
-const config = require('config')
+const config = require('config');
+const { JWT_SECRET } = require("../constants/constants");
+
 
 router.post('/', async(req,res) => {
-    console.log(req.body,'req.body');
+    console.log(req.body,JWT_SECRET,'req.body');
     try {
         const {error} = validateUser(req.body);
       
@@ -24,7 +26,7 @@ router.post('/', async(req,res) => {
         if(!validPassword){
             return res.status(400).send('Incorrect Email or Password')
         }
-        const token = jwt.sign({_id:user._id}, 'PrivateKey');
+        const token = jwt.sign({_id:user._id,exp: Math.floor(Date.now() / 1000) + 60}, JWT_SECRET);
         res.send({token:token,status:'Success',message:'Login SuccessFully'})
     } catch (error) {
         res.status(500).send({error})
