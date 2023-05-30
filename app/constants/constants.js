@@ -8,6 +8,7 @@ module.exports = {
         upperCaseAlphabets : false,
         specialChars : false,
         lowerCaseAlphabets:false,
+        step:60
     },
     MAIL_SETTINGS : {
         // service : 'gmail',
